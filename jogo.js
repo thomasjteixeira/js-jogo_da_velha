@@ -2,6 +2,7 @@ var jogador = null,
   vencedor = null;
 var jogadorSelecionado = document.getElementById("jogador-selecionado");
 var vencedorSelecionado = document.getElementById("vencedor-selecionado");
+var quantidadeJogadas = 0;
 
 // mapear todos os quadrados
 var quadrados = document.getElementsByClassName("quadrado");
@@ -10,10 +11,12 @@ mudarJogador("X");
 
 //função principal quando seleciona o quadrado
 function escolherQuadrado(id) {
+  quantidadeJogadas++;
   // se já tiver um vencedor, não pode marcar mais quadrados
   if (vencedor !== null) {
     return;
   }
+
   // pegar o elemento clicado
   var quadrado = document.getElementById(id);
 
@@ -34,11 +37,23 @@ function escolherQuadrado(id) {
 
   mudarJogador(jogador);
   checaVencedor();
+
+  //verifica se deu empate
+  verificaEmpate();
 }
 
 function mudarJogador(valor) {
   jogador = valor;
   jogadorSelecionado.innerHTML = jogador;
+}
+
+function verificaEmpate() {
+  if (quantidadeJogadas === 9) {
+    jogadorSelecionado.innerHTML = "Empate";
+    vencedorSelecionado.innerHTML = "Empate";
+
+    return;
+  }
 }
 
 // Verificar todos os quadrados para ver se tem um vencedor
@@ -130,6 +145,7 @@ function mudarVencedor(quadrado) {
 function reiniciar() {
   vencedor = null;
   vencedorSelecionado.innerHTML = "";
+  quantidadeJogadas = 0;
 
   for (var i = 1; i <= quadrados.length; i++) {
     var quadrado = document.getElementById(i);
