@@ -1,6 +1,6 @@
 const jogadorSelecionado = document.getElementById("jogador-selecionado");
 const vencedorSelecionado = document.getElementById("vencedor-selecionado");
-const quadrados = document.getElementsByClassName("quadrado");
+const quadrados = Array.from(document.getElementsByClassName("quadrado"));
 
 let jogador = "X";
 let vencedor = null;
@@ -95,8 +95,7 @@ function reiniciar() {
   vencedorSelecionado.innerHTML = "";
   quantidadeJogadas = 0;
 
-  for (let i = 1; i <= quadrados.length; i++) {
-    let quadrado = document.getElementById(i);
+  for (let quadrado of quadrados) {
     quadrado.style.background = "#eee";
     quadrado.style.color = "#eee";
     quadrado.innerHTML = "-";
