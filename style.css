@@ -1,5 +1,7 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+body, button {
   text-align: center;
+  font-family: 'Luckiest Guy', cursive;
 }
 
 .quadrado {
@@ -14,17 +16,26 @@ body {
   cursor: pointer;
   color: #eee;
 }
-
+.game-title {
+  color: #35506f;
+  font-size: 35px;
+}
 .jogador,
 .vencedor {
   font-size: 30px;
   margin-top: 10px;
+  color: #35506f;
 }
 
 button {
   margin-top: 10px;
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 50px;
   background: #eee;
   cursor: pointer;
+  border: none;
+  background-color: #35506f;
+  color: #fff;
+  font-size: 25px;
+  border-radius: 15px;
 }
